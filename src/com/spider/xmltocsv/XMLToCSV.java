@@ -30,7 +30,7 @@ public class XMLToCSV {
 	
 	public static void main(String[] args) throws IOException, XSLTransformException, JDOMException {
 		Document xmlDoc = getXMLDocument(args);
-		String xsltString = Utils.readTextFromFile(args[1]);
+		String xsltString = Utils.readTextFromFile(args[0]);
 		Document newDoc = getTransformedDocument(xmlDoc, xsltString);
 		//outputTransformedXML(newDoc);
 		
@@ -69,7 +69,7 @@ public class XMLToCSV {
 	
 	private static Document getXMLDocument(String[] args) throws IOException, JDOMException {
 		if(args.length > 1) {
-			String xmlContent = Utils.readTextFromFile(args[0]);
+			String xmlContent = Utils.readTextFromFile(args[1]);
 			InputStream stream = new ByteArrayInputStream(xmlContent.getBytes("UTF-8"));
 			return new SAXBuilder().build(stream);
 		}
